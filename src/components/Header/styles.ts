@@ -29,14 +29,13 @@ export const Container = styled.header`
 
   div {
     display: flex;
-    cursor: pointer;
 
-    p {
+    > p {
       margin-left: 10px;
       font-size: 25px;
     }
 
-    button {
+    > button {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -48,7 +47,7 @@ export const Container = styled.header`
     }
   }
 
-  ul {
+  > ul {
     display: flex;
     list-style: none;
 
@@ -64,5 +63,102 @@ export const Container = styled.header`
         border-bottom: solid 1px #aa3d32;
       }
     }
+  }
+`;
+
+export const ContentNotification = styled.div`
+  position: relative;
+`;
+
+export const Notifications = styled.div`
+  section {
+    padding: 10px;
+    width: 100%;
+    overflow: scroll;
+
+    ul {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+  width: 250px;
+  height: 300px;
+  left: 50%;
+  top: 50px;
+  background: #fff;
+
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.4;
+  position: absolute;
+  bottom: calc(100% +12px);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #312e38;
+
+  &::before {
+    content: '';
+    border-style: solid;
+    border-color: #fff transparent;
+    border-width: 0px 6px 6px 6px;
+    top: -5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;
+
+export const FavCard = styled.li`
+  width: 100%;
+  height: 80px;
+  background: #fafafa;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+
+  img {
+    width: 40px;
+    border: 1px solid #fafafa;
+    border-radius: 2px;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fafafa;
+    border-radius: 50%;
+    border: 0;
+  }
+
+  & + li {
+    margin-top: 5px;
+  }
+`;
+
+export const Badge = styled.div`
+  width: 20px;
+  height: 20px;
+  background: #aa3d32;
+  position: absolute;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  span {
+    display: bloc;
+    padding: 3px;
+    color: #ffffff;
+    font-size: 10px;
   }
 `;

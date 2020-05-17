@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import { FiHeart } from 'react-icons/fi';
+import { FaHeart } from 'react-icons/fa';
 import { Container, ContentMovies, CarMovie } from './styles';
 
 import api, { API_KEY, PATH_IMAGE } from '../../services/api';
+
+import { useLike } from '../../hooks/like';
 
 interface Movie {
   id: number;
@@ -11,10 +14,13 @@ interface Movie {
   poster_path: string;
   overview: string;
   fullPathBackgroundImage?: string;
+  isLiked?: boolean;
 }
 
 const Movies: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
+
+  const { addLike, removeLike, likes } = useLike();
 
   useEffect(() => {
     async function getMovies(): Promise<void> {
@@ -27,12 +33,13 @@ const Movies: React.FC = () => {
       const resultWithFullPath = results.map((movie: Movie) => ({
         ...movie,
         fullPathBackgroundImage: `${PATH_IMAGE}/${movie.poster_path}`,
+        isLiked: !!likes.find(like => like.id === movie.id),
       }));
       setMovies(resultWithFullPath);
     }
 
     getMovies();
-  }, []);
+  }, [likes]);
 
   return (
     <Container>
@@ -49,9 +56,15 @@ const Movies: React.FC = () => {
               <p>{movie.overview}</p>
             </div>
             <footer>
-              <button type="button">
-                <FiHeart size="20" color="#AA3D32" />
-              </button>
+              {movie.isLiked ? (
+                <button type="button" onClick={() => removeLike(movie.id)}>
+                  <FaHeart size="20" color="#AA3D32" />
+                </button>
+              ) : (
+                  <button type="button" onClick={() => addLike(movie)}>
+                    <FiHeart size="20" color="#AA3D32" />
+                  </button>
+                )}
             </footer>
           </CarMovie>
         ))}
