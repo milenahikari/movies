@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
-import { Container, ContentMovies, CarMovie } from './styles';
+import { Container, ContentMovies, CardMovie } from './styles';
 
 import api, { API_KEY, PATH_IMAGE } from '../../services/api';
 
@@ -47,7 +47,7 @@ const Movies: React.FC = () => {
 
       <ContentMovies>
         {movies.map((movie: Movie) => (
-          <CarMovie key={movie.id}>
+          <CardMovie key={movie.id}>
             <header>
               <img src={movie.fullPathBackgroundImage} alt={movie.title} />
             </header>
@@ -66,7 +66,7 @@ const Movies: React.FC = () => {
                   </button>
                 )}
             </footer>
-          </CarMovie>
+          </CardMovie>
         ))}
       </ContentMovies>
     </Container>

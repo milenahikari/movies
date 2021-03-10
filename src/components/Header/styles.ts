@@ -53,10 +53,13 @@ export const Container = styled.header`
 
     li {
       margin-right: 50px;
-      font-size: 18px;
-      color: #626462;
-      font-weight: 200;
-      cursor: pointer;
+      transform: transition 0.2;
+      a {
+        font-size: 18px;
+        font-weight: 200;
+        color: #626462;
+        text-decoration: none;
+      }
 
       &:hover {
         color: #aa3d32;
@@ -74,7 +77,7 @@ export const Notifications = styled.div`
   section {
     padding: 10px;
     width: 100%;
-    overflow: scroll;
+    /* overflow: scroll; */
 
     ul {
       display: inline-block;

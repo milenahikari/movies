@@ -29,6 +29,9 @@ const pulse = keyframes`
 
 export const Container = styled.section`
   animation: ${appearFromLeft} 1s;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
 
   h3 {
     margin: 20px 0px;
@@ -44,7 +47,7 @@ export const ContentMovies = styled.div`
 export const CardMovie = styled.div`
   background: #fff;
   border: 1px solid #fff;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
 
   &:hover {
     box-shadow: 3px 2px 5px 0px rgba(224, 220, 224, 1);
@@ -53,8 +56,7 @@ export const CardMovie = styled.div`
   header {
     img {
       width: 100%;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+      border-radius: 8px;
     }
   }
 
